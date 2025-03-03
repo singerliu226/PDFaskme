@@ -2,7 +2,6 @@ import streamlit as st
 from langchain.memory import ConversationBufferMemory
 from utils import qa_agent
 
-
 st.title("📖唱子的文件问答智能体")
 
 with st.sidebar:
@@ -11,7 +10,9 @@ with st.sidebar:
 
 if "memory" not in st.session_state:
     st.session_state["memory"] = ConversationBufferMemory(
-        return_messages=True,memory_key="chat history",
+        memory_key="chat history",
+        return_messages=True,
+        input_key="question",
         output_key="answer"
     )
 
@@ -29,8 +30,12 @@ if question and openai_api_key and not uploaded_file:
 
 if uploaded_file and question and openai_api_key:
     with st.spinner("AI正在思考中，请稍等..."):
-        response = qa_agent(openai_api_key,st.session_state["memory"],
-                            uploaded_file,question)
+        response = qa_agent(
+            openai_api_key,
+            st.session_state["memory"],
+            uploaded_file,
+            question
+        )
     st.write("### 答案")
     st.write(response["answer"])
     st.session_state["chat_history"] = response["chat_history"]

@@ -1,13 +1,13 @@
 from langchain.chains import ConversationalRetrievalChain
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
-def qa_agent(api_key, memory, uploaded_file, question):
-    model = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=api_key)
+def qa_agent(openai_api_key, memory, uploaded_file, question):
+    model = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=openai_api_key)
     file_content = uploaded_file.read()
     temp_file_path = "temp.pdf"
     with open(temp_file_path, "wb") as temp_file:

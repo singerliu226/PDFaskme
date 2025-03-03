@@ -1,10 +1,11 @@
 import streamlit as st
-
+import os
 from langchain.memory import ConversationBufferMemory
 from utils import qa_agent
 
+os.environ["PYDANTIC_ALLOW_ARTIFACT_VALIDATOR_REUSE"] = "1"
 
-st.title("📑 AI智能PDF问答工具")
+st.title("📑 唱子的智能PDF问答工具")
 
 with st.sidebar:
     openai_api_key = st.text_input("请输入OpenAI API密钥：", type="password")

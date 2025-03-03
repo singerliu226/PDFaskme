@@ -2,7 +2,8 @@ import streamlit as st
 import os
 from langchain.memory import ConversationBufferMemory
 from utils import qa_agent
-
+import pydantic
+pydantic.class_validators._FUNCS.clear()  # 清除残留的验证器缓存
 os.environ["PYDANTIC_ALLOW_ARTIFACT_VALIDATOR_REUSE"] = "1"
 
 st.title("📑 唱子的智能PDF问答工具")

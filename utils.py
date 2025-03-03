@@ -26,7 +26,8 @@ def qa_agent(api_key, memory, uploaded_file, question):
     qa = ConversationalRetrievalChain.from_llm(
         llm=model,
         retriever=retriever,
-        memory=memory
+        memory=memory,
+        verbose=True
     )
     response = qa.invoke({"chat_history": memory, "question": question})
     return response

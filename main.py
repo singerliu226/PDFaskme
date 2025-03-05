@@ -1,6 +1,7 @@
 import streamlit as st
 
 from langchain.memory import ConversationBufferMemory
+from langchain_core.utils import get_pydantic_schema
 from utils import qa_agent
 
 

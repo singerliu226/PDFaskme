@@ -1,11 +1,10 @@
 import streamlit as st
 
 from langchain.memory import ConversationBufferMemory
-from langchain_core.utils import get_pydantic_schema
 from utils import qa_agent
 
 
-st.title("📑 唱子智能PDF问答工具")
+st.title("📑 AI智能PDF问答工具")
 
 with st.sidebar:
     openai_api_key = st.text_input("请输入OpenAI API密钥：", type="password")
